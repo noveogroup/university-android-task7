@@ -5,4 +5,5 @@
     <string name="insert">Insert</string>
     <string name="delete_last">Delete last</string>
     <string name="toast_message">Fields can\'t be empty</string>
+    <string name="illegal_cost">Illegal cost</string>
 </resources>

@@ -47,15 +47,22 @@ public class EditFragment extends Fragment {
     }
 
     private void insertData() {
-        if (!TextUtils.isEmpty(mTitleView.getText()) && !TextUtils.isEmpty(mCostView.getText())) {
-            ContentValues values = new ContentValues();
-            values.put(ContentContract.Toys.Cols.TITLE, String.valueOf(mTitleView.getText()));
-            values.put(ContentContract.Toys.Cols.COST, Integer.valueOf(String.valueOf(mCostView.getText())));
-            new AsyncQueryHandler(getActivity().getContentResolver()) { }
-                    .startInsert(1, null, ContentContract.Toys.TABLE_URI, values);
-        } else {
+        if (TextUtils.isEmpty(mTitleView.getText()) || TextUtils.isEmpty(mCostView.getText())) {
             Toast.makeText(getActivity(), R.string.toast_message, Toast.LENGTH_SHORT).show();
+            return;
         }
+        int cost;
+        try {
+            cost = Integer.parseInt(String.valueOf(mCostView.getText()));
+        } catch (NumberFormatException e) {
+            Toast.makeText(getActivity(), R.string.illegal_cost, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        ContentValues values = new ContentValues();
+        values.put(ContentContract.Toys.Cols.TITLE, String.valueOf(mTitleView.getText()));
+        values.put(ContentContract.Toys.Cols.COST, cost);
+        new AsyncQueryHandler(getActivity().getContentResolver()) { }
+                .startInsert(1, null, ContentContract.Toys.TABLE_URI, values);
     }
 
     @Override
