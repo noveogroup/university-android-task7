@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Laba</string>
+    <string name="insert_button">Insert</string>
+    <string name="delete_last_button">Delete Last</string>
+
+</resources>
