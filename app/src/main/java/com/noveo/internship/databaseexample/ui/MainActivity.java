@@ -55,7 +55,6 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
             ContentValues values = new ContentValues();
             values.put(ContentDescriptor.Toys.Cols.TITLE, String.valueOf(titleEditText.getText()));
             values.put(ContentDescriptor.Toys.Cols.COST, Integer.valueOf(String.valueOf(costEditText.getText())));
-
             new AsyncQueryHandler(getContentResolver()) {}.startInsert(1, null, ContentDescriptor.Toys.TABLE_URI, values);
         } else {
             Toast.makeText(this, R.string.toast_message, Toast.LENGTH_SHORT).show();

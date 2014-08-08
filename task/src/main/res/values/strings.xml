@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Task 7</string>
+    <string name="title_hint">Title</string>
+    <string name="cost_hint">Cost</string>
+    <string name="insert">Insert</string>
+    <string name="delete_last">Delete last</string>
+    <string name="toast_message">Fields can\'t be empty</string>
+</resources>
