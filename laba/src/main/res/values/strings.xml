@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">Laba</string>
-    <string name="insert_button">Insert</string>
-    <string name="delete_last_button">Delete Last</string>
+    <string name="insert">Insert</string>
+    <string name="delete_last">Delete Last</string>
+    <string name="empty_field_message">Empty Field!</string>
+    <string name="invalid_cost_message">Incorrect price! Enter an integer value!</string>
 
 </resources>
