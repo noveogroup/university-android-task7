@@ -16,6 +16,16 @@ import com.noveo.internship.databaseexample.R;
 import com.noveo.internship.databaseexample.db.ContentDescriptor;
 import com.noveo.internship.databaseexample.db.OpenHelper;
 
+public class MainActivity extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}
+
+/*
 public class MainActivity extends Activity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private EditText titleEditText;
@@ -91,3 +101,4 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
         OpenHelper.getInstance(this).close();
     }
 }
+*/
