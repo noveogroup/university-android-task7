@@ -18,5 +18,4 @@ public class Toy {
     public String getTitle() {
         return title;
     }
-
 }
