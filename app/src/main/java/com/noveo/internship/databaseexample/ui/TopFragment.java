@@ -19,6 +19,7 @@ public class TopFragment extends Fragment {
 
     private EditText titleEditText;
     private EditText costEditText;
+    private static final int TOKEN = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,7 +55,7 @@ public class TopFragment extends Fragment {
             values.put(ContentDescriptor.Toys.Cols.TITLE, String.valueOf(titleEditText.getText()));
             values.put(ContentDescriptor.Toys.Cols.COST, Integer.valueOf(String.valueOf(costEditText.getText())));
 
-            new AsyncQueryHandler(getActivity().getContentResolver()) {}.startInsert(1, null, ContentDescriptor.Toys.TABLE_URI, values);
+            new AsyncQueryHandler(getActivity().getContentResolver()) {}.startInsert(TOKEN, null, ContentDescriptor.Toys.TABLE_URI, values);
         } else {
             Toast.makeText(getActivity(), R.string.toast_message, Toast.LENGTH_SHORT).show();
         }
@@ -62,7 +63,7 @@ public class TopFragment extends Fragment {
 
     private void deleteLast() {
         String selection = ContentDescriptor.Toys.Cols.ID + " = (SELECT MAX(" + ContentDescriptor.Toys.Cols.ID + ") FROM `" + ContentDescriptor.Toys.TABLE_NAME + "` LIMIT 1)";
-        new AsyncQueryHandler(getActivity().getContentResolver()) {}.startDelete(1, null, ContentDescriptor.Toys.TABLE_URI, selection, null);
+        new AsyncQueryHandler(getActivity().getContentResolver()) {}.startDelete(TOKEN, null, ContentDescriptor.Toys.TABLE_URI, selection, null);
     }
 
     @Override

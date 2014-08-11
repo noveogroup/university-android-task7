@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/list_fragment"
-        android:name="com.noveo.internship.databaseexample.ui.BottomFragmentFragment"
+        android:name="com.noveo.internship.databaseexample.ui.BottomFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout="@layout/fragment_bottom">
