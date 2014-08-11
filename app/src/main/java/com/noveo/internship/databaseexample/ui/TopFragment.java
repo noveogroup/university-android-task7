@@ -51,11 +51,16 @@ public class TopFragment extends Fragment {
 
     private void insertData() {
         if (!TextUtils.isEmpty(titleEditText.getText()) && !TextUtils.isEmpty(costEditText.getText())) {
-            ContentValues values = new ContentValues();
-            values.put(ContentDescriptor.Toys.Cols.TITLE, String.valueOf(titleEditText.getText()));
-            values.put(ContentDescriptor.Toys.Cols.COST, Integer.valueOf(String.valueOf(costEditText.getText())));
+            if (isNumber(costEditText.getText().toString())) {
+                ContentValues values = new ContentValues();
+                values.put(ContentDescriptor.Toys.Cols.TITLE, String.valueOf(titleEditText.getText()));
+                values.put(ContentDescriptor.Toys.Cols.COST, Integer.valueOf(String.valueOf(costEditText.getText())));
 
-            new AsyncQueryHandler(getActivity().getContentResolver()) {}.startInsert(TOKEN, null, ContentDescriptor.Toys.TABLE_URI, values);
+                new AsyncQueryHandler(getActivity().getContentResolver()) {
+                }.startInsert(TOKEN, null, ContentDescriptor.Toys.TABLE_URI, values);
+            } else {
+                Toast.makeText(getActivity(), R.string.toast_cost_error, Toast.LENGTH_SHORT).show();
+            }
         } else {
             Toast.makeText(getActivity(), R.string.toast_message, Toast.LENGTH_SHORT).show();
         }
@@ -70,6 +75,15 @@ public class TopFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         OpenHelper.getInstance(getActivity()).close();
+    }
+
+    public boolean isNumber(String input) {
+        try {
+            Double.parseDouble(input);
+            return true;
+        } catch(Exception e) {
+            return false;
+        }
     }
 }
 
