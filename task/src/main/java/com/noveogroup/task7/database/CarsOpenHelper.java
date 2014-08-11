@@ -5,14 +5,14 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class CarsOpenHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "com.noveogroup.task7.CARS_DATABASE";
     public static final int DATABASE_VERSION = 1;
     private static CarsOpenHelper instance;
-    private static HashMap<String, Integer> exampleItems;
+    private static Map<String, Integer> exampleItems;
 
 
     private CarsOpenHelper(Context context) {

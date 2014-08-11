@@ -4,9 +4,12 @@ package com.noveogroup.task7.fragments;
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 
 import com.noveogroup.task7.R;
 import com.noveogroup.task7.database.CarsContract;
+import com.noveogroup.task7.database.CarsOpenHelper;
 
 public class CarsInputFragment extends Fragment {
 
@@ -79,23 +83,26 @@ public class CarsInputFragment extends Fragment {
     }
 
     private void deleteLastItem() {
-        Uri uri = CarsContract.Cars.TABLE_URI.buildUpon()
-                .appendQueryParameter(CarsContract.QUERY_PARAMETER_LIMIT, "1").build();
 
-        new AsyncQueryHandler(getActivity().getContentResolver()) {
+        final CarsOpenHelper openHelper = CarsOpenHelper.getInstance(getActivity());
+        final SQLiteDatabase database = openHelper.getWritableDatabase();
+        new AsyncTask<Void, Void, Void>() {
             @Override
-            protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
-                super.onQueryComplete(token, cookie, cursor);
-                if (cursor == null || cursor.getCount() == 0) {
-                    return;
-                }
-
-                cursor.moveToFirst();
-                int id = cursor.getInt(0);
-                startDelete(0, null, CarsContract.Cars.TABLE_URI,
-                        CarsContract.Cars.Columns.ID + " = ?", new String[]{String.valueOf(id)});
-
+            protected Void doInBackground(Void... params) {
+                database.execSQL("DELETE FROM " + CarsContract.Cars.TABLE_NAME
+                        + " WHERE " + CarsContract.Cars.Columns.ID
+                        + " = (SELECT " + CarsContract.Cars.Columns.ID + " FROM "
+                        + CarsContract.Cars.TABLE_NAME + " ORDER BY "
+                        + CarsContract.Cars.Columns.ID + " DESC LIMIT 1)");
+                return null;
             }
-        }.startQuery(0, null, uri, null, null, null, CarsContract.Cars.Columns.ID + " DESC");
+
+            @Override
+            protected void onPostExecute(Void result) {
+                super.onPostExecute(result);
+
+                getActivity().getContentResolver().notifyChange(CarsContract.Cars.TABLE_URI, null);
+            }
+        }.execute();
     }
 }
