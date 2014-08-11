@@ -62,9 +62,4 @@ public class EditorFragment extends Fragment {
         String selection = ContentDescriptor.Toys.Cols.ID + " = (SELECT MAX(" + ContentDescriptor.Toys.Cols.ID + ") FROM `" + ContentDescriptor.Toys.TABLE_NAME + "` LIMIT 1)";
         new AsyncQueryHandler(getActivity().getContentResolver()) {}.startDelete(1, null, ContentDescriptor.Toys.TABLE_URI, selection, null);
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
 }

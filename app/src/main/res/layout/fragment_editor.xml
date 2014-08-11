@@ -15,6 +15,7 @@
         android:id="@+id/cost_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLength="9"
         android:inputType="number"/>
 
     <Button

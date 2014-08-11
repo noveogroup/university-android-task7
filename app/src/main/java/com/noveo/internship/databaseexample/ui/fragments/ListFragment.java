@@ -55,8 +55,4 @@ public class ListFragment extends Fragment implements LoaderManager.LoaderCallba
             adapter.changeCursor(null);
         }
     }
-
-    private void showData() {
-        loaderManager.restartLoader(0, null, this);
-    }
 }
