@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="example_items">
+        <item>BMW 320i xDrive,45000</item>
+        <item>Subaru WRX STI,62000</item>
+        <item>Toyota LC 200 Brownstone,97000</item>
+        <item>Mercedes S 65 AMG,338000</item>
+    </string-array>
+</resources>

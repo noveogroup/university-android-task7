@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/model_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_alignParentTop="true"
+        android:hint="@string/model_input_hint"
+        />
+
+    <EditText
+        android:id="@+id/price_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_below="@+id/model_input"
+        android:hint="@string/price_input_hint"
+        android:inputType="number"
+        />
+
+    <Button
+        android:id="@+id/insert_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/price_input"
+        android:layout_alignParentLeft="true"
+        android:text="@string/insert_button_text"
+        />
+
+    <Button
+        android:id="@+id/delete_last_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/price_input"
+        android:layout_alignParentRight="true"
+        android:text="@string/delete_last_button_text"
+        />
+
+</RelativeLayout>

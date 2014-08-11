@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Task7</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="model_input_hint">Enter car model</string>
+    <string name="price_input_hint">Enter model price</string>
+    <string name="insert_button_text">Insert</string>
+    <string name="delete_last_button_text">Delete last</string>
+
+    <string name="empty_fields_notification">The both fields are required to be non-empty.</string>
+    <string name="too_big_price_notification">
+        You should enter the price in US dollars units.</string>
+
+</resources>
