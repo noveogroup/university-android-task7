@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/titleEdit"
+    <fragment
+        android:id="@+id/top_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"/>
+        android:name="com.noveo.internship.databaseexample.ui.fragments.EditorFragment"
+        tools:layout="@layout/fragment_editor"/>
 
-    <EditText
-        android:id="@+id/costEdit"
+    <fragment
+        android:id="@+id/bottom_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"/>
-
-    <Button
-        android:id="@+id/insert"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Insert"/>
-
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:name="com.noveo.internship.databaseexample.ui.fragments.ListFragment"
+        tools:layout="@layout/fragment_list"/>
 
 </LinearLayout>
 

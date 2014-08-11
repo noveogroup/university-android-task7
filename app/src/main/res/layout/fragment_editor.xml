@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.EditorFragment">
+
+    <EditText
+        android:id="@+id/title_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/cost_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="9"
+        android:inputType="number"/>
+
+    <Button
+        android:id="@+id/insert"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/insert_text"/>
+
+    <Button
+        android:id="@+id/delete_last"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_last_text"/>
+
+</LinearLayout>
