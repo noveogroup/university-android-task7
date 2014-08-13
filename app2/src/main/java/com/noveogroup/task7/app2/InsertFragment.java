@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.noveogroup.task7.app2.R;
 import com.noveogroup.task7.app2.db.ContentDescriptor;
 
 
@@ -23,6 +22,8 @@ public class InsertFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.input_fragment, container, false);
+		titleEditText = (EditText) view.findViewById(R.id.titleEdit);
+		costEditText = (EditText) view.findViewById(R.id.costEdit);
 		view.findViewById(R.id.insert).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -39,7 +40,11 @@ public class InsertFragment extends Fragment {
 	}
 
 	private void deleteLastData() {
-
+		String id = ContentDescriptor.Toys.Cols.ID;
+		String selection = id + " = (select max(" + id + ") from "+
+				ContentDescriptor.Toys.TABLE_NAME + ")";
+		new AsyncQueryHandler(getActivity().getContentResolver()) {}
+				.startDelete(2, null, ContentDescriptor.Toys.TABLE_URI, selection, null);
 	}
 
 	private void insertData(){
