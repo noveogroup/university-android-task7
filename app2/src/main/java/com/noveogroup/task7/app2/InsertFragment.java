@@ -16,6 +16,8 @@ import com.noveogroup.task7.app2.db.ContentDescriptor;
 
 public class InsertFragment extends Fragment {
 
+	public static final int DELETE_LAST_TOKEN = 2;
+	public static final int INSERT_TOKEN = 1;
 	EditText titleEditText;
 	EditText costEditText;
 
@@ -44,16 +46,25 @@ public class InsertFragment extends Fragment {
 		String selection = id + " = (select max(" + id + ") from "+
 				ContentDescriptor.Toys.TABLE_NAME + ")";
 		new AsyncQueryHandler(getActivity().getContentResolver()) {}
-				.startDelete(2, null, ContentDescriptor.Toys.TABLE_URI, selection, null);
+				.startDelete(DELETE_LAST_TOKEN, null, ContentDescriptor.Toys.TABLE_URI, selection, null);
 	}
 
 	private void insertData(){
 		if (!TextUtils.isEmpty(titleEditText.getText()) && !TextUtils.isEmpty(costEditText.getText())) {
+
 			ContentValues values = new ContentValues();
 			values.put(ContentDescriptor.Toys.Cols.TITLE, String.valueOf(titleEditText.getText()));
-			values.put(ContentDescriptor.Toys.Cols.COST, Integer.valueOf(String.valueOf(costEditText.getText())));
+			String costText = String.valueOf(costEditText.getText());
+			try {
+				values.put(ContentDescriptor.Toys.Cols.COST, Integer.valueOf(costText));
+			} catch (NumberFormatException ignored) {
+				Toast.makeText(getActivity(), getString(R.string.cant_accept_cost_text, costText), Toast.LENGTH_SHORT).show();
+				return;
+			}
 
-			new AsyncQueryHandler(getActivity().getContentResolver()) {}.startInsert(1, null, ContentDescriptor.Toys.TABLE_URI, values);
+
+			new AsyncQueryHandler(getActivity().getContentResolver()) {
+			}.startInsert(INSERT_TOKEN, null, ContentDescriptor.Toys.TABLE_URI, values);
 		} else {
 			Toast.makeText(getActivity(), R.string.toast_message, Toast.LENGTH_SHORT).show();
 		}
