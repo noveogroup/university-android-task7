@@ -2,7 +2,7 @@ package com.noveo.internship.databaseexample.model;
 
 public class Toy {
 
-    private int id;
+    private Integer id;
     private String title;
     private int cost;
 
