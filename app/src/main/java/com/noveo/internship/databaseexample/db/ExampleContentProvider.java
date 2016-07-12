@@ -11,11 +11,11 @@ import android.util.Log;
 public class ExampleContentProvider extends ContentProvider {
 
     private static final String LOG_TAG = ExampleContentProvider.class.getSimpleName();
-    private OpenHelper dbHelper;
+    private ExampleOpenHelper dbHelper;
 
     @Override
     public boolean onCreate() {
-        dbHelper = OpenHelper.getInstance(getContext());
+        dbHelper = ExampleOpenHelper.getInstance(getContext());
         return true;
     }
 

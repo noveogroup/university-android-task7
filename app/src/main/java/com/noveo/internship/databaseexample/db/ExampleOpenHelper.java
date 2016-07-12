@@ -4,19 +4,19 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class OpenHelper extends SQLiteOpenHelper {
+public class ExampleOpenHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "internship.db";
-    private static final int DATABASE_VERSION = 1;
-    private static OpenHelper instance = null;
+    public static final String DATABASE_NAME = "internship.db";
+    public static final int DATABASE_VERSION = 1;
+    private static ExampleOpenHelper instance = null;
 
-    private OpenHelper(Context context) {
+    private ExampleOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public synchronized static OpenHelper getInstance(Context context) {
+    public synchronized static ExampleOpenHelper getInstance(Context context) {
         if (instance == null) {
-            instance = new OpenHelper(context);
+            instance = new ExampleOpenHelper(context);
         }
         return instance;
     }

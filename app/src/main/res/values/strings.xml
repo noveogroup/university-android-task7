@@ -7,4 +7,9 @@
 
     <string name="most_expensive_toy_fmt">Most expensive toy name: %1$s; cost = %2$s</string>
 
+    <string name="main_button_sqlite">SQLIte</string>
+    <string name="main_button_ormlite">ORMLite</string>
+
+    <string name="db_button_insert">Insert</string>
+
 </resources>

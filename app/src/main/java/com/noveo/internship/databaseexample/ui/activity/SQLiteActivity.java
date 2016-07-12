@@ -1,4 +1,4 @@
-package com.noveo.internship.databaseexample.ui;
+package com.noveo.internship.databaseexample.ui.activity;
 
 import android.app.Activity;
 import android.app.LoaderManager;
@@ -14,9 +14,9 @@ import android.widget.*;
 
 import com.noveo.internship.databaseexample.R;
 import com.noveo.internship.databaseexample.db.ContentDescriptor;
-import com.noveo.internship.databaseexample.db.OpenHelper;
+import com.noveo.internship.databaseexample.db.ExampleOpenHelper;
 
-public class MainActivity extends Activity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class SQLiteActivity extends Activity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private EditText titleEditText;
     private EditText costEditText;
@@ -26,7 +26,7 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sqlite);
 
         ListView listView = (ListView) findViewById(R.id.list);
         titleEditText = (EditText) findViewById(R.id.titleEdit);
@@ -64,7 +64,7 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(MainActivity.this, ContentDescriptor.Toys.TABLE_URI, null, null, null, null);
+        return new CursorLoader(SQLiteActivity.this, ContentDescriptor.Toys.TABLE_URI, null, null, null, null);
     }
 
     @Override
@@ -88,6 +88,6 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        OpenHelper.getInstance(this).close();
+        ExampleOpenHelper.getInstance(this).close();
     }
 }
