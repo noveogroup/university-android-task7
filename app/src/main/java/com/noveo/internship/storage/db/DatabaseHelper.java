@@ -1,4 +1,4 @@
-package com.noveo.internship.databaseexample.db;
+package com.noveo.internship.storage.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
