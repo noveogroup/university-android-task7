@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">DatabaseExample</string>
+    <string name="app_name">Database Lab</string>
+    <string name="users_title">Users</string>
+    <string name="emails_title">Emails</string>
 
-    <string name="toast_message">Fields can\'t be empty</string>
-
-    <string name="most_expensive_toy_fmt">Most expensive toy name: %1$s; cost = %2$s</string>
-
-    <string name="main_button_sqlite">SQLIte</string>
-    <string name="main_button_ormlite">ORMLite</string>
-
-    <string name="db_button_insert">Insert</string>
+    <string name="button_users">Open Users</string>
+    <string name="button_emails">Open Emails</string>
 
 </resources>

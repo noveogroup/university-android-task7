@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
-        applicationId "com.noveogroup.task1"
-        minSdkVersion 14
-        targetSdkVersion 23
+        applicationId "com.noveogroup.task7"
+        minSdkVersion 21
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
     }
@@ -17,11 +17,28 @@ compileSdkVersion 23
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError true
+        checkAllWarnings true
+        disable 'ContentDescription'
+        // for most projects accessibility tools support is out of scope
+        disable 'InvalidPackage'
+        // a lot of Java libraries have references to Java SE packages
+        disable 'SpUsage'
+        // sp can be scaled by the user's font size preference so can break design
+        disable 'IconMissingDensityFolder'
+        // there are no pixel art for the most projects
+        disable 'RtlCompat', 'RtlEnabled', 'RtlHardcoded', 'RtlSymmetry'
+        // there are too few projects with RTL support
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.j256.ormlite:ormlite-core:4.48'
-    compile 'com.j256.ormlite:ormlite-android:4.48'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+
+    compile 'com.j256.ormlite:ormlite-core:5.0'
+    compile 'com.j256.ormlite:ormlite-android:5.0'
 }
