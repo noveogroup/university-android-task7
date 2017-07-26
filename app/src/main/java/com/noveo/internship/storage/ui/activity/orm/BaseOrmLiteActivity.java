@@ -22,6 +22,6 @@ public class BaseOrmLiteActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        databaseHelper.close();
+        OpenHelperManager.releaseHelper();
     }
 }
